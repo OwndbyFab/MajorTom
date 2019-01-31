@@ -1,12 +1,13 @@
-package main.majorTom;
+package main;
 
 import main.states.GameState;
+import main.states.MenuState;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.*;
 
-import main.states.*;
+
 
 public class MajorTom extends StateBasedGame {
 
