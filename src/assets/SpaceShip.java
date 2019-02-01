@@ -17,6 +17,8 @@ public class SpaceShip {
     private final static float SPEEDLIMIT = 5;
     private int hp;
     private int maxHp;
+    private int gas;
+    private int maxGas;
     private float oldX;
     private float oldY;
 
@@ -35,6 +37,9 @@ public class SpaceShip {
 
         maxHp = 100;
         hp = maxHp;
+
+        maxGas = 100;
+        gas = maxGas;
     }
 
     public void collide(){
@@ -83,6 +88,9 @@ public class SpaceShip {
         ship = (Polygon) ship.transform(Transform.createTranslateTransform(currentOffsetX,currentOffsetY));
     }
 
+
+
+
     public void render(GameContainer container, Graphics g) throws SlickException {
         g.setColor(Color.green);
         g.fill(ship);
@@ -101,7 +109,8 @@ public class SpaceShip {
         g.drawString("ShipTopPoint = X =" +shipTop.getX()+" Y = "+shipTop.getY(),450,y);
         */
 
-        g.drawString("" + hp, SCREEN_WIDTH - 50,10);
+        g.drawString("HP: " + hp, SCREEN_WIDTH - 80,10);
+        g.drawString("Fuel: " + gas, SCREEN_WIDTH - 98, 30);
 
 
 
@@ -120,7 +129,20 @@ public class SpaceShip {
         ship.setY(oldY - ship.getCenterY());
     }
 
+    public void fillGas(){
+        System.out.println("gas collected");
+        if ((gas + 25) < maxGas)
+             gas = maxGas;
+        else
+            gas += 25;
+        //hier bin ich dran
+    }
+
     public Polygon getShip() {
         return ship;
     }
+
+    public int getGas() { return gas; }
+
+    public void setGas(int gas) { this.gas = gas; }
 }
