@@ -17,8 +17,9 @@ public class SpaceShip {
     private final static float SPEEDLIMIT = 5;
     private int hp;
     private int maxHp;
-    private int gas;
-    private int maxGas;
+    private float gas;
+    private float fillGasAmount;
+    private float maxGas;
     private float oldX;
     private float oldY;
 
@@ -34,14 +35,16 @@ public class SpaceShip {
 
         this.ship = ship;
         this.shipTop = new Point(ship.getPoints()[2],ship.getPoints()[3]);
-
+        //Hp setup
         maxHp = 100;
         hp = maxHp;
-
+        //Fuel setup
         maxGas = 100;
-        gas = maxGas;
+        fillGasAmount = 25;
+        gas = 40;
     }
 
+    //Wall collision
     public void collide(){
        // currentOffsetY = 0;
        // currentOffsetX = 0;
@@ -54,9 +57,10 @@ public class SpaceShip {
         oldX = ship.getCenterX();
         oldY = ship.getCenterY();
 
+
         shipTop.setX(ship.getPoints()[2]);
         shipTop.setY(ship.getPoints()[3]);
-        if (container.getInput().isKeyDown(Input.KEY_UP) && canMove) {
+        if (container.getInput().isKeyDown(Input.KEY_UP) && canMove && gas > 0) {
             float xCenter = ship.getCenterX();
             float yCenter = ship.getCenterY();
             float xTop = shipTop.getX();
@@ -73,7 +77,7 @@ public class SpaceShip {
             } else if (currentOffsetY < -SPEEDLIMIT) {
                 currentOffsetY = -SPEEDLIMIT;
             }
-
+            gas -= 0.1;
             /*ship = (Polygon) ship.transform(Transform.createTranslateTransform((xTop-xCenter)/60,(yTop-yCenter)/60));*/
         }
         if (container.getInput().isKeyDown(Input.KEY_RIGHT)) {
@@ -109,11 +113,21 @@ public class SpaceShip {
         g.drawString("ShipTopPoint = X =" +shipTop.getX()+" Y = "+shipTop.getY(),450,y);
         */
 
+        //HUD
         g.drawString("HP: " + hp, SCREEN_WIDTH - 80,10);
-        g.drawString("Fuel: " + gas, SCREEN_WIDTH - 98, 30);
+        g.drawString("Fuel: " + Math.round(gas), SCREEN_WIDTH - 98, 30);
+
+        if (gas < 1){
+            g.setColor(Color.red);
+            g.drawString("No fuel", (SCREEN_WIDTH / 2 - 100), 10);
+        }
+        else if(gas < 30){
+            g.setColor(Color.yellow);
+            g.drawString("Fuel low", (SCREEN_WIDTH / 2 - 100), 10);
+        }
 
 
-
+        //Draw ship
         g.setColor(Color.magenta);
         g.drawLine(ship.getMinX(), ship.getMinY(), ship.getMaxX(), ship.getMinY());
         g.drawLine(ship.getMaxX(), ship.getMinY(), ship.getMaxX(), ship.getMaxY());
@@ -131,18 +145,17 @@ public class SpaceShip {
 
     public void fillGas(){
         System.out.println("gas collected");
-        if ((gas + 25) < maxGas)
-             gas = maxGas;
-        else
+        if ((gas + fillGasAmount) > maxGas) {
+            gas = maxGas;
+
+        } else {
             gas += 25;
-        //hier bin ich dran
+        }
     }
 
-    public Polygon getShip() {
-        return ship;
-    }
+    public Polygon getShip() { return ship; }
 
-    public int getGas() { return gas; }
+    public float getGas() { return gas; }
 
     public void setGas(int gas) { this.gas = gas; }
 }

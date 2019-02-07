@@ -1,10 +1,10 @@
-package main.states;
+package states;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MenuState extends BasicGameState {
     public static final int ID = 0;
@@ -22,11 +22,17 @@ public class MenuState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-
+        g.drawString("Press 1 to start Game", 150, 10 );
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 
+    }
+
+    public void keyReleased(int key, char c){
+        if (key == Input.KEY_1){
+            game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+        }
     }
 }
