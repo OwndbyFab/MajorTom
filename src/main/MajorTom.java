@@ -17,7 +17,7 @@ public class MajorTom extends StateBasedGame {
     public static void main(String[] args) {
         try {
             AppGameContainer container = new AppGameContainer(new MajorTom());
-            container.setDisplayMode(800, 600, false);
+            container.setDisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT, false);
             container.setTargetFrameRate(60);
 
             container.start();
