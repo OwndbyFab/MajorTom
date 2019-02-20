@@ -1,8 +1,7 @@
 package main;
 
 import assets.FuelTank;
-import levels.Level;
-import assets.Wall;
+import level.Level;
 import assets.SpaceShip;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Point;

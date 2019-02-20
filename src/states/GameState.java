@@ -2,7 +2,7 @@ package states;
 
 import assets.FuelTank;
 import assets.SpaceShip;
-import levels.Level;
+import level.Level;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;

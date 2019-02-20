@@ -1,4 +1,4 @@
-package levels;
+package level;
 
 import assets.FuelTank;
 import assets.Portal;
@@ -11,7 +11,7 @@ import org.newdawn.slick.geom.RoundedRectangle;
 
 import java.util.ArrayList;
 
-public class Level {
+public class Level2 {
 
     Wall [] walls;
 
@@ -29,7 +29,7 @@ public class Level {
 
     public Portal getPortal() { return portal;}
 
-    public Level(){
+    public Level2(){
        /* walls = new Wall[6];
         walls[0] = new Wall(new Rectangle( 0,0, SCREEN_WIDTH, 1), true);
         walls[1] = new Wall(new Rectangle( SCREEN_WIDTH - 5,0, 1, SCREEN_HEIGHT), true);
@@ -39,9 +39,9 @@ public class Level {
         walls[4] = new Wall(new Rectangle( 395,0, 1, SCREEN_HEIGHT), true);
         walls[5] = new Wall(new Rectangle( 0,350, SCREEN_WIDTH, 1), true); */
 
-       fuelTanks = new ArrayList<FuelTank>(1);
-       fuelTanks.add(new FuelTank(new RoundedRectangle(200,200,20,30, 2)));
-       portal = new Portal(new Circle(250,250,20), true);
+        fuelTanks = new ArrayList<FuelTank>(1);
+        fuelTanks.add(new FuelTank(new RoundedRectangle(200,200,20,30, 2)));
+        portal = new Portal(new Circle(250,250,20), true);
     }
 
     public void update(GameContainer container, int delta) throws SlickException {
@@ -51,10 +51,10 @@ public class Level {
        /* for ( Wall wall : walls)
             wall.render(container, g); */
 
-       for (FuelTank fuelTanks : fuelTanks)
+        for (FuelTank fuelTanks : fuelTanks)
             fuelTanks.render(container, g);
 
 
-       portal.render(container, g);
+        portal.render(container, g);
     }
 }
