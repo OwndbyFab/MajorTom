@@ -52,6 +52,11 @@ public class GameState extends BasicGameState {
         if (removeIndex != -1){
             level.getFuelTanks().remove(removeIndex);
         }
+
+
+        if (spaceShip.getShip().intersects(level.getPortal().getShape())){
+            System.out.println("Portal erreicht");
+        }
     }
 
     @Override

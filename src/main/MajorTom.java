@@ -1,5 +1,6 @@
 package main;
 
+import states.FabsTestState;
 import states.GameState;
 import states.MenuState;
 import org.newdawn.slick.AppGameContainer;
@@ -32,8 +33,9 @@ public class MajorTom extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        addState(new MenuState());
+            addState(new MenuState());
         addState(new GameState());
+        addState(new FabsTestState());
     }
 
 }

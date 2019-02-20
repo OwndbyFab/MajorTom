@@ -23,6 +23,7 @@ public class MenuState extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         g.drawString("Press 1 to start Game", 150, 10 );
+        g.drawString("Press 2 to start FabsTestState", 150, 30 );
     }
 
     @Override
@@ -33,6 +34,10 @@ public class MenuState extends BasicGameState {
     public void keyReleased(int key, char c){
         if (key == Input.KEY_1){
             game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+        }
+
+        if (key == Input.KEY_2){
+            game.enterState(FabsTestState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
     }
 }
