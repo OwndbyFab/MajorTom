@@ -7,15 +7,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
 
-import static main.MainGame.SCREEN_WIDTH;
-
 public class Paint {
 
     private Polygon ship;
     private Point shipTop;
     private Polygon newShape;
-
-
 
     public Paint(Point startPoint){
         //Startpoint (e.g. 100,100)

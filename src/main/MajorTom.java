@@ -12,13 +12,15 @@ import org.newdawn.slick.state.*;
 
 public class MajorTom extends StateBasedGame {
 
-    public static final int SCREEN_WIDTH = 800;
-    public static final int SCREEN_HEIGHT = 600;
+    public static final int WIDTH = 1600;
+    public static final int HEIGHT = 900;
+
+    public static int currentLevel = 1;
 
     public static void main(String[] args) {
         try {
             AppGameContainer container = new AppGameContainer(new MajorTom());
-            container.setDisplayMode(800, 600, false);
+            container.setDisplayMode(WIDTH, HEIGHT, false);
             container.setTargetFrameRate(60);
 
             container.start();
@@ -33,7 +35,14 @@ public class MajorTom extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-            addState(new MenuState());
+
+        container.setMaximumLogicUpdateInterval(60);
+        container.setTargetFrameRate(60);
+        container.setAlwaysRender(true);
+        container.setShowFPS(true);
+        container.setVSync(true);
+
+        addState(new MenuState());
         addState(new GameState());
         addState(new FabsTestState());
     }

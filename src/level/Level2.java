@@ -1,60 +1,46 @@
 package level;
 
-import assets.FuelTank;
-import assets.Portal;
-import assets.Wall;
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Line;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.RoundedRectangle;
 
-import java.util.ArrayList;
+import main.MajorTom;
 
-public class Level2 {
-
-    Wall [] walls;
-
-    Portal portal;
-
-    ArrayList<FuelTank> fuelTanks;
+import assets.FuelTank;
+import assets.Portal;
+import assets.Wall;
 
 
 
-    public Wall[] getWalls() {
-        return walls;
-    }
+public class Level2 extends LevelBase {
 
-    public ArrayList<FuelTank> getFuelTanks() { return fuelTanks; }
+    public Level2() {
+        /*
+        spawn = new Portal(new Circle());
+        exit = new Portal(new Circle());
+        */
 
-    public Portal getPortal() { return portal;}
-
-    public Level2(){
-       /* walls = new Wall[6];
-        walls[0] = new Wall(new Rectangle( 0,0, SCREEN_WIDTH, 1), true);
-        walls[1] = new Wall(new Rectangle( SCREEN_WIDTH - 5,0, 1, SCREEN_HEIGHT), true);
-        walls[2] = new Wall(new Rectangle( 0,SCREEN_HEIGHT - 5, SCREEN_WIDTH, 1), true);
-        walls[3] = new Wall(new Rectangle( 0,0, 1, SCREEN_HEIGHT), true);
-
-        walls[4] = new Wall(new Rectangle( 395,0, 1, SCREEN_HEIGHT), true);
-        walls[5] = new Wall(new Rectangle( 0,350, SCREEN_WIDTH, 1), true); */
+        walls = new Wall[6];
+        walls[0] = new Wall(new Line( 0,0, MajorTom.WIDTH, 0), true);
+        walls[1] = new Wall(new Line( MajorTom.WIDTH - 5,0, 1, MajorTom.HEIGHT), true);
+        walls[2] = new Wall(new Line( 0,MajorTom.HEIGHT - 5, MajorTom.WIDTH, 1), true);
+        walls[3] = new Wall(new Line( 0,0, 1, MajorTom.HEIGHT), true);
+        walls[4] = new Wall(new Line( 395,0, 0, MajorTom.HEIGHT), true);
+        walls[5] = new Wall(new Line( 0,350, MajorTom.WIDTH, 1), true);
 
         fuelTanks = new ArrayList<FuelTank>(1);
-        fuelTanks.add(new FuelTank(new RoundedRectangle(200,200,20,30, 2)));
-        portal = new Portal(new Circle(250,250,20), true);
-    }
-
-    public void update(GameContainer container, int delta) throws SlickException {
+        fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-       /* for ( Wall wall : walls)
-            wall.render(container, g); */
+       super.render(container, g);
+    }
 
-        for (FuelTank fuelTanks : fuelTanks)
-            fuelTanks.render(container, g);
-
-
-        portal.render(container, g);
+    public void update(GameContainer container, int delta) throws SlickException {
     }
 }

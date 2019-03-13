@@ -9,11 +9,9 @@ import org.newdawn.slick.geom.Shape;
 
 public class FuelTank extends Item {
 
-
     public FuelTank(Shape shape) {
         super(shape);
     }
-
 
     @Override
     public void render(GameContainer container, Graphics g) {

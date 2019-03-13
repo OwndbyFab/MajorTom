@@ -1,5 +1,6 @@
 package states;
 
+import main.MajorTom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -7,7 +8,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MenuState extends BasicGameState {
-    public static final int ID = 0;
+    private static final int ID = 0;
     private StateBasedGame game;
 
     @Override
@@ -22,22 +23,29 @@ public class MenuState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.drawString("Press 1 to start Game", 150, 10 );
-        g.drawString("Press 2 to start FabsTestState", 150, 30 );
+        if (MajorTom.currentLevel > 1)
+            g.drawString("0  -  Continue Game", 0, MajorTom.HEIGHT /2);
+        else
+            g.drawString("", 0 , MajorTom.HEIGHT);
+            g.drawString("1  -  New Game", 0, MajorTom.HEIGHT / 2 + 20);
+
+        g.drawString("2  -  FabsTestState", 0, MajorTom.HEIGHT / 2 + 40);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-
-    }
-
-    public void keyReleased(int key, char c){
-        if (key == Input.KEY_1){
+        if (container.getInput().isKeyPressed(Input.KEY_0)
+                || container.getInput().isKeyPressed(Input.KEY_NUMPAD0)){
+            MajorTom.currentLevel = 1;
             game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
 
-        if (key == Input.KEY_2){
+        if (container.getInput().isKeyPressed(Input.KEY_1)
+                || container.getInput().isKeyPressed(Input.KEY_NUMPAD1))
+            game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+
+        if (container.getInput().isKeyPressed(Input.KEY_2)
+                || container.getInput().isKeyPressed(Input.KEY_NUMPAD2))
             game.enterState(FabsTestState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-        }
     }
 }
