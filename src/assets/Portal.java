@@ -10,6 +10,7 @@ public class Portal extends PhysicalObject{
 
     public Portal(Shape shape, boolean hasCollision, Color color) {
         super(shape, hasCollision);
+        this.color = color;
     }
 
     @Override

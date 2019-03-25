@@ -20,12 +20,11 @@ import assets.Wall;
 public class Level4 extends LevelBase {
 
     public Level4(){
+        super();
         /*
         spawn = new Portal(new Circle());
         exit = new Portal(new Circle());
         */
-
-        walls = new Wall[6];
 
         fuelTanks = new ArrayList<FuelTank>(1);
     }

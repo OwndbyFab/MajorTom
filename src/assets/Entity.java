@@ -12,7 +12,7 @@ public abstract class Entity {
     }
 
     public void render(GameContainer container, Graphics g) {
-        g.fill(shape);
+        g.draw(shape);
     }
 
     protected abstract void update(GameContainer container, int delta);
