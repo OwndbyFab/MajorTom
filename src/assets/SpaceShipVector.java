@@ -82,13 +82,14 @@ public class SpaceShipVector {
     private void accelerate() {
 
         Vector2f top = new Vector2f(polygon.getPoint(1)[0], polygon.getPoint(1)[1]);
-        velocity = velocity.add(top.sub(new Vector2f(polygon.getCenterX(), polygon.getCenterY())).normalise().scale((float) 0.1));
-
-        if(velocity.getX() > SPEEDLIMIT) velocity.x = SPEEDLIMIT;
-        if(velocity.getX() < -SPEEDLIMIT) velocity.x = -SPEEDLIMIT;
-        if(velocity.getY() > SPEEDLIMIT) velocity.y = SPEEDLIMIT;
-        if(velocity.getY() < -SPEEDLIMIT) velocity.y = -SPEEDLIMIT;
-        gas -= 0.1;
+        if (gas >= 0) {
+            velocity = velocity.add(top.sub(new Vector2f(polygon.getCenterX(), polygon.getCenterY())).normalise().scale((float) 0.1));
+            gas -= 0.1;
+        }
+            if (velocity.getX() > SPEEDLIMIT) velocity.x = SPEEDLIMIT;
+            if (velocity.getX() < -SPEEDLIMIT) velocity.x = -SPEEDLIMIT;
+            if (velocity.getY() > SPEEDLIMIT) velocity.y = SPEEDLIMIT;
+            if (velocity.getY() < -SPEEDLIMIT) velocity.y = -SPEEDLIMIT;
     }
 
     /**
