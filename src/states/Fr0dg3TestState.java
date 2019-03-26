@@ -62,7 +62,7 @@ public class Fr0dg3TestState extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
-        collision.detectCollision(spaceShip, shapes);
+      /*  collision.detectCollision(spaceShip, shapes); */
         spaceShip.update(gameContainer);
 
 
