@@ -14,9 +14,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class GameState extends BasicGameState {
 
-    public static final int ID = 1;
-    SpaceShip spaceShip;
-    LevelBase level;
+    static final int ID = 1;
+    private SpaceShip spaceShip;
+    private LevelBase level;
 
     @Override
     public int getID() {

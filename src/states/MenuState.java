@@ -30,6 +30,7 @@ public class MenuState extends BasicGameState {
             g.drawString("1  -  New Game", 0, MajorTom.HEIGHT / 2 + 20);
 
         g.drawString("2  -  FabsTestState", 0, MajorTom.HEIGHT / 2 + 40);
+        g.drawString("3  -  Fr0dg3TestState", 0, MajorTom.HEIGHT / 2 + 60);
     }
 
     @Override
@@ -47,5 +48,9 @@ public class MenuState extends BasicGameState {
         if (container.getInput().isKeyPressed(Input.KEY_2)
                 || container.getInput().isKeyPressed(Input.KEY_NUMPAD2))
             game.enterState(FabsTestState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+
+        if (container.getInput().isKeyPressed(Input.KEY_3)
+                || container.getInput().isKeyPressed(Input.KEY_NUMPAD3))
+            game.enterState(Fr0dg3TestState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
     }
 }

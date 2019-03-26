@@ -1,6 +1,7 @@
 package main;
 
 import states.FabsTestState;
+import states.Fr0dg3TestState;
 import states.GameState;
 import states.MenuState;
 import org.newdawn.slick.AppGameContainer;
@@ -44,5 +45,7 @@ public class MajorTom extends StateBasedGame {
         addState(new MenuState());
         addState(new GameState());
         addState(new FabsTestState());
+        addState(new Fr0dg3TestState());
+
     }
 }
