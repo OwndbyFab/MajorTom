@@ -26,16 +26,10 @@ public class Fr0dg3TestState extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
         spaceShip = new SpaceShipVector(new Vector2f(100,100));
-        Shape collisionLine = new Line(200,200,300,300);
+        Shape collisionLine = new Line(200,200,300,200);
 
-        Shape collisionPolygon = new Polygon();
-        ((Polygon) collisionPolygon).addPoint(500,500);
-        ((Polygon) collisionPolygon).addPoint(550,450);
-        ((Polygon) collisionPolygon).addPoint(600,600);
-
-        shapes = new Shape[2];
+        shapes = new Shape[1];
         shapes[0] = collisionLine;
-        shapes[1] = collisionPolygon;
         collision = new Collision();
     }
 
