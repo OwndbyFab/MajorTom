@@ -16,17 +16,21 @@ import java.util.ArrayList;
 
 public class Level1 extends LevelBase {
 
+    public Wall[] walls;
+
     public Level1() {
-        spawn = new Portal(new Circle(20, 20, 20), true, Color.magenta);
+        super();
+        spawn = new Portal(new Circle(40, 80, 15), true, Color.magenta);
         exit = new Portal(new Circle(MajorTom.WIDTH - 20, MajorTom.HEIGHT - 20, 20), true, Color.orange);
 
-        walls = new Wall[6];
-        walls[0] = new Wall(new Line(0, 0, MajorTom.WIDTH, 0), true);
+        walls = new Wall[0];
+        /*
         walls[1] = new Wall(new Line(MajorTom.WIDTH, 0, MajorTom.WIDTH, MajorTom.HEIGHT), true);
         walls[2] = new Wall(new Line(MajorTom.WIDTH, MajorTom.HEIGHT, 0, MajorTom.HEIGHT), true);
         walls[3] = new Wall(new Line(0, MajorTom.HEIGHT, 0, 0), true);
         walls[4] = new Wall(new Line(395, 0, 0, MajorTom.HEIGHT), true);
         walls[5] = new Wall(new Line(0, 350, MajorTom.WIDTH, 0), true);
+        */
 
         fuelTanks = new ArrayList<FuelTank>(1);
         fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
@@ -35,6 +39,10 @@ public class Level1 extends LevelBase {
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
         super.render(container, g);
+        /*
+        for (Wall wall : walls)
+        wall.render(container, g);
+        */
     }
 
     public void update(GameContainer container, int delta) throws SlickException {

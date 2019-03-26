@@ -19,7 +19,10 @@ import assets.Wall;
 
 public class Level2 extends LevelBase {
 
+    public Wall[] walls;
+
     public Level2() {
+        super();
         /*
         spawn = new Portal(new Circle());
         exit = new Portal(new Circle());

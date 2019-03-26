@@ -24,7 +24,7 @@ public class GameState extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer container, StateBasedGame game) {
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
         spaceShip = new SpaceShip(new Point(100, 100));
 
         switch (MajorTom.currentLevel) {
@@ -47,33 +47,6 @@ public class GameState extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         spaceShip.update(container, delta);
-
-        int removeIndex = -1;
-
-        /*****************Tests Fabian Collision**************************************************/
-      /*
-      for (Wall wall : level.getWalls()) {
-            // if (wall.getShape().intersects(spaceShip.getPolygon()))
-            //   spaceShip.getCollisionDamage();
-            wall.checkCollision(spaceShip.getPolygon());
-        } */
-
-      /*
-    for (FuelTank fueltank : level.fuelTanks) {
-        if (spaceShip.getPolygon().intersects(fueltank.getShape())) {
-            removeIndex = level.fuelTanks.indexOf(fueltank);
-            spaceShip.fillGas();
-        }
-    }
-
-    if (removeIndex != -1) {
-        level.fuelTanks.remove(removeIndex);
-    }
-
-    if (spaceShip.getPolygon().intersects(level.getPortal().getShape())) {
-        System.out.println("Portal erreicht");
-    }
-    */
     }
 
     @Override

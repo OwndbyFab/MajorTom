@@ -40,7 +40,6 @@ public class MajorTom extends StateBasedGame {
         container.setMaximumLogicUpdateInterval(60);
         container.setTargetFrameRate(60);
         container.setAlwaysRender(true);
-        container.setShowFPS(true);
         container.setVSync(true);
 
         addState(new MenuState());
@@ -49,5 +48,4 @@ public class MajorTom extends StateBasedGame {
         addState(new Fr0dg3TestState());
 
     }
-
 }
