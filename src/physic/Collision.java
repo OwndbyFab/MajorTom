@@ -20,8 +20,9 @@ public class Collision {
 
 
             }
-            if (!shipPolygon.intersects(gameObject)&& counter%1000==0) {
+            if (!shipPolygon.intersects(gameObject)&& counter%60==0) {
                 System.out.println(rdyToCollide);
+                counter = 0;
                 rdyToCollide = true;
                 }
         }

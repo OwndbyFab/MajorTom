@@ -11,8 +11,16 @@ public abstract class Entity {
         this.shape = shape;
     }
 
+    public void setShape(Shape shape) {
+        this.shape = shape;
+    }
+
+    public Shape getShape() {
+        return shape;
+    }
+
     public void render(GameContainer container, Graphics g) {
-        g.fill(shape);
+        g.draw(shape);
     }
 
     protected abstract void update(GameContainer container, int delta);

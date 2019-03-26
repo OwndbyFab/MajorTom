@@ -8,7 +8,6 @@ import org.newdawn.slick.geom.Shape;
 
 public class Wall extends PhysicalObject{
 
-
     public Wall(Line shape, boolean hasCollision) {
         super(shape, hasCollision);
     }

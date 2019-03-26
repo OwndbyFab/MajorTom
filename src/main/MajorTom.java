@@ -1,13 +1,11 @@
 package main;
 
-import states.FabsTestState;
-import states.GameState;
-import states.MenuState;
+import states.*;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.*;
-
+import states.GameState;
 
 
 public class MajorTom extends StateBasedGame {
@@ -39,12 +37,13 @@ public class MajorTom extends StateBasedGame {
         container.setMaximumLogicUpdateInterval(60);
         container.setTargetFrameRate(60);
         container.setAlwaysRender(true);
-        container.setShowFPS(true);
         container.setVSync(true);
 
         addState(new MenuState());
         addState(new GameState());
         addState(new FabsTestState());
-    }
+        addState(new Fr0dg3TestState());
+        addState(new Level01());
 
+    }
 }
