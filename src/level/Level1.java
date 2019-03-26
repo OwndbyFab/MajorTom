@@ -32,9 +32,9 @@ public class Level1 extends LevelBase {
         walls[5] = new Wall(new Line(0, 350, MajorTom.WIDTH, 0), true);
         */
 
-        fuelTanks = new ArrayList<FuelTank>(1);
+        /*fuelTanks = new ArrayList<FuelTank>(1);
         fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
-    }
+    */}
 
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {

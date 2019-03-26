@@ -17,7 +17,7 @@ public abstract class LevelBase {
 
     public Wall[] outerBoundaries = new Wall[4];
 
-    public ArrayList<FuelTank> fuelTanks;
+
 
     public LevelBase() {
         outerBoundaries[0] = new Wall(new Line(3, 50, MajorTom.WIDTH - 3, 50), true);
@@ -29,8 +29,6 @@ public abstract class LevelBase {
     public void render(GameContainer container, Graphics g) throws SlickException {
         for (Wall wall : outerBoundaries)
             wall.render(container, g);
-        for (FuelTank fuelTank : fuelTanks)
-            fuelTank.render(container, g);
 
         spawn.render(container, g);
         exit.render(container, g);

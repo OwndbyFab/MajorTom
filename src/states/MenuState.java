@@ -35,15 +35,10 @@ public class MenuState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (container.getInput().isKeyPressed(Input.KEY_0)
-                || container.getInput().isKeyPressed(Input.KEY_NUMPAD0)){
+        if (container.getInput().isKeyPressed(Input.KEY_1)){
             MajorTom.currentLevel = 1;
-            game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+            game.enterState(Level01.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
-
-        if (container.getInput().isKeyPressed(Input.KEY_1)
-                || container.getInput().isKeyPressed(Input.KEY_NUMPAD1))
-            game.enterState(GameState.ID, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 
         if (container.getInput().isKeyPressed(Input.KEY_2)
                 || container.getInput().isKeyPressed(Input.KEY_NUMPAD2))

@@ -26,7 +26,7 @@ public class Level4 extends LevelBase {
         exit = new Portal(new Circle());
         */
 
-        fuelTanks = new ArrayList<FuelTank>(1);
+      /*  fuelTanks = new ArrayList<FuelTank>(1);*/
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {

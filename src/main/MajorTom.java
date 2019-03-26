@@ -1,14 +1,11 @@
 package main;
 
-import states.FabsTestState;
-import states.Fr0dg3TestState;
-import states.GameState;
-import states.MenuState;
+import states.*;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.*;
-
+import states.GameState;
 
 
 public class MajorTom extends StateBasedGame {
@@ -46,6 +43,7 @@ public class MajorTom extends StateBasedGame {
         addState(new GameState());
         addState(new FabsTestState());
         addState(new Fr0dg3TestState());
+        addState(new Level01());
 
     }
 }

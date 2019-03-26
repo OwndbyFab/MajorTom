@@ -13,6 +13,7 @@ public class FuelTank extends Item {
         super(shape);
     }
 
+
     @Override
     public void render(GameContainer container, Graphics g) {
         g.setColor(new Color(64, 132, 13));
@@ -30,4 +31,8 @@ public class FuelTank extends Item {
         g.drawLine(shape.getCenterX() + 5, shape.getCenterY() + 8, shape.getMaxX() - 2, shape.getMaxY() - 2);
         g.drawLine(shape.getCenterX() - 4, shape.getCenterY() + 8, shape.getMinX() + 2, shape.getMaxY() - 2); */
     }
+
+
+
+
 }
