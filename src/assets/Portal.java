@@ -1,21 +1,29 @@
 package assets;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Vector2f;
 
-public class Portal extends PhysicalObject{
-    public Color color;
+public class Portal {
+    private Circle circle;
 
-    public Portal(Shape shape, boolean hasCollision, Color color) {
-        super(shape, hasCollision);
-        this.color = color;
+    public Portal(Vector2f location) {
+        this.circle = new Circle(location.x, location.y, 20);
     }
 
-    @Override
-    public void render(GameContainer container, Graphics g) {
+    public void render(Graphics g) {
+        Color color = g.getColor();
+        g.setColor(Color.darkGray);
+        g.fill(circle);
         g.setColor(color);
-        super.render(container, g);
+    }
+
+    public Circle getCircle() {
+        return circle;
+    }
+
+    public void setCircle(Circle circle) {
+        this.circle = circle;
     }
 }

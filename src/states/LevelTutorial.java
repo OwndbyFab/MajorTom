@@ -17,14 +17,14 @@ import physic.Collision;
 
 import java.util.ArrayList;
 
-public class Level01 extends BasicGameState {
+public class LevelTutorial extends BasicGameState {
 
-    public static final int ID = 1;
+    public static final int ID = 9;
     SpaceShipVector spaceShip;
 
     public Shape[] shapes;
     public Shape[] shapesWithoutCollision;
-    private Portal portal;
+
 
     public ArrayList<FuelTank> fuelTanks;
     Collision collision;
@@ -44,17 +44,14 @@ public class Level01 extends BasicGameState {
         fuelTanks = new ArrayList<FuelTank>(1);
         fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
         collision = new Collision();
-        shapes = new Shape[6];
+        shapes = new Shape[4];
 
         shapes[0] = (new Line(0,0, width, 0));
         shapes[1] = (new Line(width, 0, width, height));
         shapes[2] = (new Line(width,height, 0, height));
         shapes[3] = (new Line(0,height, 0, 0));
 
-        shapes[4] = (new Line(width/8,0, width/2+width/4, height/2-height/10));
-        shapes[5] = (new Line(width/8,height, width/2+width/4, height/2+height/10));
 
-        portal = new Portal(new Vector2f(width/2+width/4+width/8,height/2));
 
 
 
@@ -81,7 +78,6 @@ public class Level01 extends BasicGameState {
             fuelTanks.remove(removeIndex);
         }
 
-        if (spaceShip.getPolygon().intersects(portal.getCircle())) game.enterState(game.getCurrentStateID(),new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
     }
 
     @Override
@@ -91,8 +87,6 @@ public class Level01 extends BasicGameState {
             g.setColor(Color.white);
             g.draw(shape);
         }
-        portal.render(g);
-
     }
 
 }
