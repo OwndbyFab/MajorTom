@@ -11,7 +11,7 @@ public class SpaceShipVector {
 
     private Polygon polygon;
     private Vector2f velocity;
-    private final static float SPEEDLIMIT = 2;
+    private final static float SPEEDLIMIT = 3;
     private Color color;
     private int hp;
     private int maxHp;
@@ -50,6 +50,7 @@ public class SpaceShipVector {
         if(input.isKeyDown(Input.KEY_RIGHT)) rotate(true);
         if(input.isKeyDown(Input.KEY_LEFT)) rotate(false);
 
+
         polygon = (Polygon) polygon.transform(Transform.createTranslateTransform(velocity.x, velocity.y));
     }
 
@@ -76,14 +77,14 @@ public class SpaceShipVector {
      * Adds a scaled normalized Vector that points to shipTop to velocity. Is called from update method
      */
     private void accelerate() {
+
         Vector2f top = new Vector2f(polygon.getPoint(1)[0], polygon.getPoint(1)[1]);
         velocity = velocity.add(top.sub(new Vector2f(polygon.getCenterX(), polygon.getCenterY())).normalise().scale((float) 0.1));
 
         if(velocity.getX() > SPEEDLIMIT) velocity.x = SPEEDLIMIT;
         if(velocity.getX() < -SPEEDLIMIT) velocity.x = -SPEEDLIMIT;
-        if(velocity.getX() > SPEEDLIMIT) velocity.y = SPEEDLIMIT;
-        if(velocity.getX() < -SPEEDLIMIT) velocity.y = -SPEEDLIMIT;
-
+        if(velocity.getY() > SPEEDLIMIT) velocity.y = SPEEDLIMIT;
+        if(velocity.getY() < -SPEEDLIMIT) velocity.y = -SPEEDLIMIT;
         gas -= 0.1;
     }
 

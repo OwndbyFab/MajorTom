@@ -1,6 +1,7 @@
 package states;
 
 import assets.SpaceShipVector;
+import main.MajorTom;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Line;
@@ -26,10 +27,25 @@ public class Fr0dg3TestState extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
         spaceShip = new SpaceShipVector(new Vector2f(100,100));
-        Shape collisionLine = new Line(200,200,300,200);
+        Shape collisionLine = new Line(200,200,300,250);
 
-        shapes = new Shape[1];
+        Shape polygon = new Polygon();
+        ((Polygon) polygon).addPoint(500,500);
+        ((Polygon) polygon).addPoint(600,500);
+        ((Polygon) polygon).addPoint(550,600);
+
+        Shape border = new Polygon();
+        ((Polygon) border).addPoint(0,0);
+        ((Polygon) border).addPoint(MajorTom.WIDTH,0);
+        ((Polygon) border).addPoint(MajorTom.WIDTH,MajorTom.HEIGHT);
+        ((Polygon) border).addPoint(0,MajorTom.HEIGHT);
+
+
+
+        shapes = new Shape[3];
         shapes[0] = collisionLine;
+        shapes[1] = polygon;
+        shapes[2] = border;
         collision = new Collision();
     }
 
@@ -45,6 +61,7 @@ public class Fr0dg3TestState extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
         collision.detectCollision(spaceShip,shapes);
+
         spaceShip.update(gameContainer);
     }
 }
