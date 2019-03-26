@@ -7,12 +7,23 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 public class Collision {
-
+    boolean rdyToCollide = true;
+    long counter = 0;
     public void detectCollision(SpaceShipVector spaceShip, Shape[] gameObjects) {
         Shape shipPolygon = spaceShip.getPolygon();
-
+        counter++;
         for (Shape gameObject : gameObjects) {
-            if (shipPolygon.intersects(gameObject)) resolveCollision(spaceShip, gameObject);
+            if (shipPolygon.intersects(gameObject) && rdyToCollide){
+                resolveCollision(spaceShip, gameObject);
+                rdyToCollide = false;
+               /* System.out.println(rdyToCollide);*/
+
+
+            }
+            if (!shipPolygon.intersects(gameObject)&& counter%1000==0) {
+                System.out.println(rdyToCollide);
+                rdyToCollide = true;
+                }
         }
     }
 

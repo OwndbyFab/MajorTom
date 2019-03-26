@@ -58,6 +58,9 @@ public class SpaceShipVector {
         //draw polygon
         g.setColor(color);
         g.fill(polygon);
+        g.setColor(Color.blue);
+        g.drawLine(polygon.getCenterX(),polygon.getCenterY(),polygon.getCenterX()+velocity.copy().scale(5).x,polygon.getCenterY()+velocity.copy().scale(5).y);
+        g.setColor(color);
 
         //HUD
         g.drawString("HP: " + hp, WIDTH - 80,10);
