@@ -16,6 +16,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import physic.Collision;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LevelTutorial extends BasicGameState {
 
@@ -87,6 +88,11 @@ public class LevelTutorial extends BasicGameState {
             g.setColor(Color.white);
             g.draw(shape);
         }
+
+        for (FuelTank fuelTank : fuelTanks) {
+            fuelTank.render(container, g);
+        }
+
     }
 
 }

@@ -86,6 +86,34 @@ public class Level01 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        g.setColor(new Color(75, 103, 147));
+        g.fill(new Circle(50,30, 100));
+        g.setColor(Color.yellow);
+        int offset = 70;
+        int random = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 15; j++) {
+                random++;
+                if (i % 3 == 0) {
+                    if (j % 3 == 0) {
+                        if (random % 2 == 0) {
+                            Polygon polygon = new Polygon();
+                            Polygon polygon2 = new Polygon();
+                            polygon.addPoint(10 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(20 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(15 + i * 100 + Math.round(offset * 1.5), 19 + j * 80 + offset);
+
+                            polygon2.addPoint(10 + i * 100 + Math.round(offset * 1.5), 15+ j * 80 + offset);
+                            polygon2.addPoint(20 + i * 100 + Math.round(offset * 1.5), 15 + j * 80 + offset);
+                            polygon2.addPoint(15 + i * 100 + Math.round(offset * 1.5), 6 + j * 80 + offset);
+
+                            g.fill(polygon);
+                            g.fill(polygon2);
+                        }
+                    }
+                }
+            }
+        }
         spaceShip.render(g);
         for (Shape shape : shapes) {
             g.setColor(Color.white);
