@@ -20,7 +20,7 @@ public class Collision {
 
 
             }
-            if (!shipPolygon.intersects(gameObject)&& counter%60==0) {
+            if (!shipPolygon.intersects(gameObject)&& counter%25==0) {
                 System.out.println(rdyToCollide);
                 counter = 0;
                 rdyToCollide = true;
@@ -44,6 +44,8 @@ public class Collision {
         Vector2f reflection = velocityNegated.add(aV.scale(2));
 
         spaceShip.setVelocity(reflection);
+
+        spaceShip.setHp(spaceShip.getHp() - 10);
 
 
 

@@ -42,7 +42,7 @@ public class Level01 extends BasicGameState {
         spaceShip = new SpaceShipVector(new Vector2f(100,MajorTom.HEIGHT/2));
         spaceShip.getPolygon().transform(Transform.createRotateTransform(90));
         fuelTanks = new ArrayList<FuelTank>(1);
-        fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
+        fuelTanks.add(new FuelTank(new RoundedRectangle(width / 10 * 6, height / 2, 20, 30, 2)));
         collision = new Collision();
         shapes = new Shape[6];
 
@@ -64,6 +64,9 @@ public class Level01 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         collision.detectCollision(spaceShip, shapes);
+        if (spaceShip.getHp() <= 0) {
+            game.enterState(EndState.ID, new FadeOutTransition(new Color(234, 68, 68)), new FadeInTransition(Color.red));
+        }
 
         spaceShip.update(container);
 
@@ -119,6 +122,11 @@ public class Level01 extends BasicGameState {
             g.draw(shape);
         }
         portal.render(g);
+
+        for (FuelTank fuelTank : fuelTanks) {
+            fuelTank.render(container, g);
+        }
+
 
     }
 

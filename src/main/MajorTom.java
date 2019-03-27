@@ -47,6 +47,7 @@ public class MajorTom extends StateBasedGame {
         addState(new Level02());
         addState(new Level03());
         addState(new LevelTutorial());
+        addState(new EndState());
 
     }
 }

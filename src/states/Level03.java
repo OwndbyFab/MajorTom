@@ -42,7 +42,9 @@ public class Level03 extends BasicGameState {
         spaceShip = new SpaceShipVector(new Vector2f(100,MajorTom.HEIGHT/2));
         spaceShip.getPolygon().transform(Transform.createRotateTransform(90));
         fuelTanks = new ArrayList<FuelTank>(1);
-        fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
+        fuelTanks.add(new FuelTank(new RoundedRectangle(width / 2, height / 10, 20, 30, 2)));
+        fuelTanks.add(new FuelTank(new RoundedRectangle(width / 2, height / 10 * 9, 20, 30, 2)));
+
         collision = new Collision();
         shapes = new Shape[16];
 
@@ -80,6 +82,9 @@ public class Level03 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         collision.detectCollision(spaceShip, shapes);
+        if (spaceShip.getHp() <= 0) {
+            game.enterState(EndState.ID, new FadeOutTransition(new Color(234, 68, 68)), new FadeInTransition(Color.red));
+        }
 
         spaceShip.update(container);
 
@@ -102,12 +107,43 @@ public class Level03 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        g.setColor(Color.yellow);
+        int offset = 70;
+        int random = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 15; j++) {
+                random++;
+                if (i % 3 == 0) {
+                    if (j % 3 == 0) {
+                        if (random % 2 == 0) {
+                            Polygon polygon = new Polygon();
+                            Polygon polygon2 = new Polygon();
+                            polygon.addPoint(10 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(20 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(15 + i * 100 + Math.round(offset * 1.5), 19 + j * 80 + offset);
+
+                            polygon2.addPoint(10 + i * 100 + Math.round(offset * 1.5), 15+ j * 80 + offset);
+                            polygon2.addPoint(20 + i * 100 + Math.round(offset * 1.5), 15 + j * 80 + offset);
+                            polygon2.addPoint(15 + i * 100 + Math.round(offset * 1.5), 6 + j * 80 + offset);
+
+                            g.fill(polygon);
+                            g.fill(polygon2);
+                        }
+                    }
+                }
+            }
+        }
         spaceShip.render(g);
         for (Shape shape : shapes) {
             g.setColor(Color.white);
             g.draw(shape);
         }
         portal.render(g);
+
+        for (FuelTank fuelTank : fuelTanks) {
+            fuelTank.render(container, g);
+        }
+
 
     }
 

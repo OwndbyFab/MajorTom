@@ -2,6 +2,8 @@ package states;
 
 import main.MajorTom;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -30,6 +32,36 @@ public class MenuState extends BasicGameState{
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        g.setColor(new Color(75, 103, 147));
+        g.fill(new Circle(50,30, 100));
+        g.setColor(new Color(214, 48, 29));
+        g.fill(new Circle(1500,530, 150));
+        g.setColor(Color.yellow);
+        int offset = 70;
+        int random = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 15; j++) {
+                random++;
+                if (i % 3 == 0) {
+                    if (j % 3 == 0) {
+                        if (random % 2 == 0) {
+                            Polygon polygon = new Polygon();
+                            Polygon polygon2 = new Polygon();
+                            polygon.addPoint(10 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(20 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
+                            polygon.addPoint(15 + i * 100 + Math.round(offset * 1.5), 19 + j * 80 + offset);
+
+                            polygon2.addPoint(10 + i * 100 + Math.round(offset * 1.5), 15+ j * 80 + offset);
+                            polygon2.addPoint(20 + i * 100 + Math.round(offset * 1.5), 15 + j * 80 + offset);
+                            polygon2.addPoint(15 + i * 100 + Math.round(offset * 1.5), 6 + j * 80 + offset);
+
+                            g.fill(polygon);
+                            g.fill(polygon2);
+                        }
+                    }
+                }
+            }
+        }
         button.render(container, g);
         button1.render(container, g);
         button2.render(container, g);

@@ -20,6 +20,7 @@ import org.newdawn.slick.gui.GUIContext;
         private String text;
         private Music music;
 
+
         public Button(GUIContext container, int x, int y, int width, int height, String text) throws SlickException {
             super(container);
             setLocation(x, y);
@@ -70,9 +71,12 @@ import org.newdawn.slick.gui.GUIContext;
 
         @Override
         public void render(GUIContext container, Graphics g) throws SlickException {
-            g.setColor(Color.blue);
+
+            g.setColor(new Color(214, 29, 112));
+
+
             g.fillRect(x, y, width, height);
-            g.setColor(Color.black);
+            g.setColor(Color.white);
             g.drawString(text, x + width/2 -40, y + height/2-10);
         }
         @Override
