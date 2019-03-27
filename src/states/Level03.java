@@ -17,9 +17,9 @@ import physic.Collision;
 
 import java.util.ArrayList;
 
-public class Level01 extends BasicGameState {
+public class Level03 extends BasicGameState {
 
-    public static final int ID = 1;
+    public static final int ID = 3;
     SpaceShipVector spaceShip;
 
     public Shape[] shapes;
@@ -44,17 +44,33 @@ public class Level01 extends BasicGameState {
         fuelTanks = new ArrayList<FuelTank>(1);
         fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
         collision = new Collision();
-        shapes = new Shape[6];
+        shapes = new Shape[16];
 
         shapes[0] = (new Line(0,0, width, 0));
         shapes[1] = (new Line(width, 0, width, height));
         shapes[2] = (new Line(width,height, 0, height));
         shapes[3] = (new Line(0,height, 0, 0));
 
-        shapes[4] = (new Line(width/8,0, width/2+width/4, height/2-height/10));
-        shapes[5] = (new Line(width/8,height, width/2+width/4, height/2+height/10));
+        shapes[4] = (new Line(width/10*2,0, width/10*3, height/10*4));
+        shapes[5] = (new Line(width/10*3, height/10*4, width/10*4, 0));
+        shapes[6] = (new Line(width/10*6,0, width/10*7, height/10*4));
+        shapes[7] = (new Line(width/10*7, height/10*4,width/10*8,0));
 
-        portal = new Portal(new Vector2f(width/2+width/4+width/8,height/2));
+
+        shapes[8] = (new Line(width/10*4,height/10*5,width/10*5,height/10*2));
+        shapes[9] = (new Line(width/10*5,height/10*2, width/10*6,height/10*5));
+        shapes[10] = (new Line(width/10*6,height/10*5, width/10*5, height/10*8));
+        shapes[11] = (new Line(width/10*5, height/10*8, width/10*4, height/10*5));
+
+        shapes[12] = (new Line(width/10*2, height,width/10*3,height/10*6));
+        shapes[13] = (new Line(width/10*3,height/10*6,width/10*4,height));
+        shapes[14] = (new Line(width/10*6,height,width/10*7,height/10*6));
+        shapes[15] = (new Line(width/10*7,height/10*6,width/10*8,height));
+
+
+
+
+        portal = new Portal(new Vector2f(width/10*9,height/10*5));
 
 
 
@@ -75,6 +91,7 @@ public class Level01 extends BasicGameState {
                 spaceShip.fillGas();
             }
         }
+
 
         if (removeIndex != -1){
             fuelTanks.remove(removeIndex);
