@@ -10,7 +10,7 @@ import java.awt.Font;
 public class EndState extends BasicGameState {
 
 
-        public static final int ID = 4;
+        public static final int ID = 6;
 
 
 

@@ -69,13 +69,7 @@ public class Level03 extends BasicGameState {
         shapes[14] = (new Line(width/10*6,height,width/10*7,height/10*6));
         shapes[15] = (new Line(width/10*7,height/10*6,width/10*8,height));
 
-
-
-
         portal = new Portal(new Vector2f(width/10*9,height/10*5));
-
-
-
     }
 
 
@@ -102,7 +96,8 @@ public class Level03 extends BasicGameState {
             fuelTanks.remove(removeIndex);
         }
 
-        if (spaceShip.getPolygon().intersects(portal.getCircle())) game.enterState(game.getCurrentStateID()+1,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+        if (spaceShip.getPolygon().intersects(portal.getCircle()))
+            game.enterState(game.getCurrentStateID()+1,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
     }
 
     @Override
