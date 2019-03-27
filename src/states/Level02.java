@@ -17,9 +17,9 @@ import physic.Collision;
 
 import java.util.ArrayList;
 
-public class Level01 extends BasicGameState {
+public class Level02 extends BasicGameState {
 
-    public static final int ID = 1;
+    public static final int ID = 2;
     SpaceShipVector spaceShip;
 
     public Shape[] shapes;
@@ -44,17 +44,29 @@ public class Level01 extends BasicGameState {
         fuelTanks = new ArrayList<FuelTank>(1);
         fuelTanks.add(new FuelTank(new RoundedRectangle(200, 200, 20, 30, 2)));
         collision = new Collision();
-        shapes = new Shape[6];
+        shapes = new Shape[14];
 
         shapes[0] = (new Line(0,0, width, 0));
         shapes[1] = (new Line(width, 0, width, height));
         shapes[2] = (new Line(width,height, 0, height));
         shapes[3] = (new Line(0,height, 0, 0));
 
-        shapes[4] = (new Line(width/8,0, width/2+width/4, height/2-height/10));
-        shapes[5] = (new Line(width/8,height, width/2+width/4, height/2+height/10));
+        shapes[4] = (new Line(width/8,0, width/8, height/5));
+        shapes[5] = (new Line(width/8, height/10*2, width/10*4, height/10*4));
+        shapes[6] = (new Line(width/10*4,height/10*4, width/10*6, height/10*4));
+        shapes[7] = (new Line(width/10*6, height/10*4,width/10*8,height/10*2));
+        shapes[8] = (new Line(width/10*8,height/5,width/10*8,0));
 
-        portal = new Portal(new Vector2f(width/2+width/4+width/8,height/2));
+        shapes[9] = (new Line(width/8,height, width/8, height/10*4));
+        shapes[10] = (new Line(width/8, height/10*4, width/10*4, height/10*6));
+        shapes[11] = (new Line(width/10*4,height/10*6, width/10*6, height/10*6));
+        shapes[12] = (new Line(width/10*6, height/10*6,width/10*8,height/10*4));
+        shapes[13] = (new Line(width/10*8,height/10*4,width/10*8,height));
+
+
+
+
+        portal = new Portal(new Vector2f(width/10*9,height/10));
 
 
 
@@ -76,6 +88,7 @@ public class Level01 extends BasicGameState {
             }
         }
 
+
         if (removeIndex != -1){
             fuelTanks.remove(removeIndex);
         }
@@ -85,34 +98,6 @@ public class Level01 extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.setColor(new Color(75, 103, 147));
-        g.fill(new Circle(50,30, 100));
-        g.setColor(Color.yellow);
-        int offset = 70;
-        int random = 0;
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 15; j++) {
-                random++;
-                if (i % 3 == 0) {
-                    if (j % 3 == 0) {
-                        if (random % 2 == 0) {
-                            Polygon polygon = new Polygon();
-                            Polygon polygon2 = new Polygon();
-                            polygon.addPoint(10 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
-                            polygon.addPoint(20 + i * 100 + Math.round(offset * 1.5), 10 + j * 80 + offset);
-                            polygon.addPoint(15 + i * 100 + Math.round(offset * 1.5), 19 + j * 80 + offset);
-
-                            polygon2.addPoint(10 + i * 100 + Math.round(offset * 1.5), 15+ j * 80 + offset);
-                            polygon2.addPoint(20 + i * 100 + Math.round(offset * 1.5), 15 + j * 80 + offset);
-                            polygon2.addPoint(15 + i * 100 + Math.round(offset * 1.5), 6 + j * 80 + offset);
-
-                            g.fill(polygon);
-                            g.fill(polygon2);
-                        }
-                    }
-                }
-            }
-        }
         spaceShip.render(g);
         for (Shape shape : shapes) {
             g.setColor(Color.white);
