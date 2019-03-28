@@ -12,7 +12,6 @@ public class Item extends Entity {
 
     @Override
     protected void update(GameContainer container, int delta) {
-
     }
 
 }

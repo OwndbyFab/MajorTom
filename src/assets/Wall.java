@@ -3,10 +3,12 @@ package assets;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Line;
 import org.newdawn.slick.geom.Shape;
 
 public class Wall extends PhysicalObject{
-    public Wall(Shape shape, boolean hasCollision) {
+
+    public Wall(Line shape, boolean hasCollision) {
         super(shape, hasCollision);
     }
 

@@ -5,7 +5,7 @@ import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Transform;
 
-import static main.MainGame.SCREEN_WIDTH;
+import static main.MajorTom.WIDTH;
 
 public class SpaceShip {
 
@@ -114,16 +114,16 @@ public class SpaceShip {
         */
 
         //HUD
-        g.drawString("HP: " + hp, SCREEN_WIDTH - 80,10);
-        g.drawString("Fuel: " + Math.round(gas), SCREEN_WIDTH - 98, 30);
+        g.drawString("HP: " + hp, WIDTH - 80,10);
+        g.drawString("Fuel: " + Math.round(gas), WIDTH - 98, 30);
 
         if (gas < 1){
             g.setColor(Color.red);
-            g.drawString("No fuel", (SCREEN_WIDTH / 2 - 100), 10);
+            g.drawString("No fuel", (WIDTH / 2 - 100), 10);
         }
         else if(gas < 30){
             g.setColor(Color.yellow);
-            g.drawString("Fuel low", (SCREEN_WIDTH / 2 - 100), 10);
+            g.drawString("Fuel low", (WIDTH / 2 - 100), 10);
         }
 
 

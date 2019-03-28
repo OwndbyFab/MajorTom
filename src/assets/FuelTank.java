@@ -9,7 +9,6 @@ import org.newdawn.slick.geom.Shape;
 
 public class FuelTank extends Item {
 
-
     public FuelTank(Shape shape) {
         super(shape);
     }
@@ -32,4 +31,8 @@ public class FuelTank extends Item {
         g.drawLine(shape.getCenterX() + 5, shape.getCenterY() + 8, shape.getMaxX() - 2, shape.getMaxY() - 2);
         g.drawLine(shape.getCenterX() - 4, shape.getCenterY() + 8, shape.getMinX() + 2, shape.getMaxY() - 2); */
     }
+
+
+
+
 }

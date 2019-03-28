@@ -5,21 +5,23 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Shape;
 
 public abstract class Entity {
+    public Shape shape;
 
-
-    protected Shape shape;
-
-    public Entity(Shape shape){
+    public Entity(Shape shape) {
         this.shape = shape;
     }
 
-    protected abstract void update(GameContainer container, int delta);
-
-    public void render(GameContainer container, Graphics g){
-        g.fill(shape);
+    public void setShape(Shape shape) {
+        this.shape = shape;
     }
 
     public Shape getShape() {
         return shape;
     }
+
+    public void render(GameContainer container, Graphics g) {
+        g.draw(shape);
+    }
+
+    protected abstract void update(GameContainer container, int delta);
 }
