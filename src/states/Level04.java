@@ -63,6 +63,9 @@ public class Level04 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         collision.detectCollision(spaceShip, shapes);
+        if (spaceShip.getHp() <= 0) {
+            game.enterState(EndState.ID, new FadeOutTransition(new Color(234, 68, 68)), new FadeInTransition(Color.red));
+        }
 
         spaceShip.update(container);
 

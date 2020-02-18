@@ -18,7 +18,7 @@ import physic.Collision;
 import java.util.ArrayList;
 
 public class Level05 extends BasicGameState {
-    public static final int ID = 1;
+    public static final int ID = 5;
     SpaceShipVector spaceShip;
 
     public Shape[] shapes;
@@ -89,7 +89,9 @@ public class Level05 extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         collision.detectCollision(spaceShip, shapes);
-
+        if (spaceShip.getHp() <= 0) {
+            game.enterState(EndState.ID, new FadeOutTransition(new Color(234, 68, 68)), new FadeInTransition(Color.red));
+        }
         spaceShip.update(container);
 
         int removeIndex = -1;

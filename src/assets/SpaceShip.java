@@ -41,7 +41,7 @@ public class SpaceShip {
         //Fuel setup
         maxGas = 100;
         fillGasAmount = 25;
-        gas = 40;
+        gas = maxGas;
     }
 
     //Wall collision
